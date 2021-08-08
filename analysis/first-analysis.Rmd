@@ -1,0 +1,25 @@
+---
+title: "first-analysis"
+author: "byelenin"
+date: "2021-08-08"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r}
+
+library(AER)
+data(CASchools)   
+CASchools$STR <- CASchools$students/CASchools$teachers       
+CASchools$score <- (CASchools$read + CASchools$math)/2
+
+mod <- lm(score ~ STR, data = CASchools)
+mod
+
+predict(mod,newdata=data.frame("STR" = 30))
+
+```
+
